@@ -1,17 +1,18 @@
 import pathlib
+import os
 
 from pydantic import BaseSettings
+from dotenv import load_dotenv
+load_dotenv()
 
 ROOT_DIR = pathlib.Path(__file__).parent.parent.resolve()
 
 
-# TODO
-# use env file
 class Settings(BaseSettings):
-    PROJECT_NAME = "fast api simple"
+    PROJECT_NAME = os.environ["PROJECT_NAME"]
     API_V1_STR: str = "/api/v1"
-    SQLALCHEMY_DATABASE_URL: str = f"sqlite:///{ROOT_DIR}/sql_app.db"
-    BACKEND_CORS_ORIGINS = ["http://localhost", "http://localhost:8000"]
+    SQLALCHEMY_DATABASE_URL: str = os.environ["SQLALCHEMY_DATABASE_URL"]
+    BACKEND_CORS_ORIGINS = os.environ["BACKEND_CORS_ORIGINS"]
 
 
 settings = Settings()
