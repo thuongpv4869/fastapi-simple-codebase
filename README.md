@@ -1,20 +1,22 @@
 # FastAPI simple codebase
 
-## 1. Installation
+## Guide
+prepare .env file like `.env_example, app/.env_example`  
+1. Build image
 ```bash
-pip install -r requirements.txt
+docker-compose build
 ```
-
-
-## 2. Run
-1. Fake data  
+2. Run migrate db
 ```bash
-./scripts/fake_data.sh
+docker-compose run api ./scripts/migrate.sh
 ```
-2. Run  
+3. Fake data
 ```bash
-./start.sh
+docker-compose run api ./scripts/fake_data.sh
 ```
-
+4. Run server
+```bash
+docker-compose up
+```
 *api docs: http://localhost:8000/docs*
 
