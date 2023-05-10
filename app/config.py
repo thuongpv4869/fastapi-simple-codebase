@@ -3,7 +3,8 @@ import os
 
 from pydantic import BaseSettings
 from dotenv import load_dotenv
-load_dotenv()
+
+load_dotenv(os.getenv("ENV_FILE", ".env"))
 
 ROOT_DIR = pathlib.Path(__file__).parent.parent.resolve()
 
