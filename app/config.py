@@ -17,5 +17,8 @@ class Settings(BaseSettings):
     SQLALCHEMY_DATABASE_URL: str = os.environ["SQLALCHEMY_DATABASE_URL"]
     BACKEND_CORS_ORIGINS = os.environ["BACKEND_CORS_ORIGINS"]
 
+    ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ["ACCESS_TOKEN_EXPIRE_MINUTES"])
+    SECRET_KEY = os.environ["SECRET_KEY"]
+
 
 settings = Settings()

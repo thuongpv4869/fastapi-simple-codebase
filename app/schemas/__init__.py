@@ -3,3 +3,6 @@ from .customer import (
     Customer,
     CustomerUpdate
 )
+
+from .token import * # noqa
+from .user import *

@@ -19,7 +19,8 @@ docker-compose run api ./scripts/fake_data.sh
 ```bash
 docker-compose up
 ```
-*api docs: http://localhost:8000/docs*
+*api docs: http://localhost:8000/docs*  
+*admin account: admin/changeme*
 
 ### 2. Run test
 ```

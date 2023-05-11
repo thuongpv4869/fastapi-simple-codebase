@@ -4,6 +4,9 @@ from app import models
 from app.db.session import SessionLocal
 
 from faker import Faker
+
+from app.services.token import get_password_hash
+
 fake = Faker()
 
 logging.basicConfig(level=logging.INFO)
@@ -25,14 +28,27 @@ def fake_customers(db):
     db.commit()
 
 
-def init() -> None:
-    db = SessionLocal()
-    fake_customers(db)
+def create_admin_user(db):
+
+    plain_pass = "changeme"
+    user = models.User(
+        email="admin",
+        full_name="admin",
+        phone="123456789",
+        password=get_password_hash(plain_pass)
+    )
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    print(f"user admin has been created: {user.email}/{plain_pass}")
+    return user
 
 
 def main() -> None:
     logger.info("Creating fake data")
-    init()
+    db = SessionLocal()
+    create_admin_user(db)
+    fake_customers(db)
     logger.info("fake data created")
 
 
