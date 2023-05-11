@@ -4,9 +4,11 @@ import os
 from pydantic import BaseSettings
 from dotenv import load_dotenv
 
-load_dotenv(os.getenv("ENV_FILE", ".env"))
+APP_DIR = pathlib.Path(__file__).parent.resolve()
 
-ROOT_DIR = pathlib.Path(__file__).parent.parent.resolve()
+ROOT_DIR = APP_DIR.parent.resolve()
+
+load_dotenv(os.getenv("ENV_FILE", f"{APP_DIR}/.env"))
 
 
 class Settings(BaseSettings):

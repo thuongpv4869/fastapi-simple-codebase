@@ -1,6 +1,7 @@
 # FastAPI simple codebase
 
 ## Guide
+### 1. Run project
 prepare .env file like `.env_example, app/.env_example`  
 1. Build image
 ```bash
@@ -20,3 +21,7 @@ docker-compose up
 ```
 *api docs: http://localhost:8000/docs*
 
+### 2. Run test
+```
+docker compose run -e ENV_FILE=/code/app/.env.test api sh -c "cd app && pytest"
+```
