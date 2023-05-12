@@ -19,4 +19,3 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/token-form
 
 def get_current_user(db=Depends(get_db), token=Depends(oauth2_scheme)):
     return services.token.get_current_user(db, token)
-

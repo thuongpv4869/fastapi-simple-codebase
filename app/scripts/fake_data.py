@@ -18,10 +18,7 @@ def fake_customers(db):
     for x in range(5):
         customers.append(
             models.Customer(
-                full_name=fake.name(),
-                email=fake.email(),
-                phone=fake.phone_number(),
-                address=fake.address()
+                full_name=fake.name(), email=fake.email(), phone=fake.phone_number(), address=fake.address()
             )
         )
     db.bulk_save_objects(customers)
@@ -29,14 +26,8 @@ def fake_customers(db):
 
 
 def create_admin_user(db):
-
     plain_pass = "changeme"
-    user = models.User(
-        email="admin",
-        full_name="admin",
-        phone="123456789",
-        password=get_password_hash(plain_pass)
-    )
+    user = models.User(email="admin", full_name="admin", phone="123456789", password=get_password_hash(plain_pass))
     db.add(user)
     db.commit()
     db.refresh(user)

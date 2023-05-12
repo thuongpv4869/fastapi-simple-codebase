@@ -1,8 +1,4 @@
-from .customer import (
-    CustomerCreate,
-    Customer,
-    CustomerUpdate
-)
+from .customer import CustomerCreate, Customer, CustomerUpdate  # noqa
 
-from .token import * # noqa
-from .user import *
+from .token import *  # noqa
+from .user import *  # noqa

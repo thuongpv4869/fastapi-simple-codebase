@@ -1,5 +1,4 @@
 from fastapi import Depends
-from sqlalchemy.orm import Session
 
 from app import schemas, models
 from app.api import deps

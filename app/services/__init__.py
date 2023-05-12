@@ -1,2 +1,2 @@
-import app.services.crud_user
-import app.services.token
+import app.services.crud_user  # noqa
+import app.services.token  # noqa

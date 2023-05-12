@@ -5,7 +5,7 @@ from .mixins import TimestampMixin
 
 
 class User(TimestampMixin, Base):
-    __tablename__ = "user" # noqa
+    __tablename__ = "user"  # noqa
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
 
@@ -14,5 +14,3 @@ class User(TimestampMixin, Base):
     phone: Mapped[str] = mapped_column(unique=True, index=True)
     disabled: Mapped[bool] = mapped_column(default=False)
     password: Mapped[str] = mapped_column()
-
-

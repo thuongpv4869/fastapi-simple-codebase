@@ -16,12 +16,7 @@ def test_read_customer(client, customer_db, db):
 
 def test_create_customer(db, client):
     with rollback_transaction(db):
-        payload = dict(
-            full_name=fake.name(),
-            email=fake.email(),
-            phone=fake.phone_number(),
-            address=fake.address()
-        )
+        payload = dict(full_name=fake.name(), email=fake.email(), phone=fake.phone_number(), address=fake.address())
         url = f"{api_v1_prefix}/customers"
 
         response = client.post(url, json=payload)

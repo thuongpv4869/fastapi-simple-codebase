@@ -38,4 +38,3 @@ class CustomerIdentityCard(TimestampMixin, Base):
 
     customer_id: Mapped[int] = mapped_column(ForeignKey("customer.id"))
     customer: Mapped["Customer"] = relationship(back_populates="identity_card")
-

@@ -29,15 +29,10 @@ def token_create(login_input: schemas.TokenCreate, db: Session = Depends(deps.ge
         }
     )
 
-    return dict(
-        access_token=access_token,
-        user_id=user_db.id,
-        email=user_db.email
-    )
+    return dict(access_token=access_token, user_id=user_db.id, email=user_db.email)
 
 
 @router.post("/token-form", response_model=schemas.TokenData)
 def token_form(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(deps.get_db)):
     json_data = schemas.TokenCreate(email=form_data.username, password=form_data.password)
     return token_create(json_data, db)
-

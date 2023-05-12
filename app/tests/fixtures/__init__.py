@@ -1,1 +1,1 @@
-from .customer import * # noqa
+from .customer import *  # noqa

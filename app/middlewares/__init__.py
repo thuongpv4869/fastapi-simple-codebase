@@ -1,3 +1,1 @@
-from .process_time import (
-    ProcessTimeMiddleware
-)
+from .process_time import ProcessTimeMiddleware  # noqa

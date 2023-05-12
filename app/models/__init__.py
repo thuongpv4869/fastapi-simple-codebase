@@ -1,7 +1,2 @@
-from .user import (
-    User
-)
-from .customer import (
-    Customer,
-    CustomerIdentityCard
-)
+from .user import User  # noqa
+from .customer import Customer, CustomerIdentityCard  # noqa

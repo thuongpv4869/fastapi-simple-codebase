@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-import pytest # noqa
+import pytest  # noqa
 from sqlalchemy import create_engine, make_url
 from sqlalchemy_utils import functions as db_helpers
 from sqlalchemy.orm import sessionmaker
@@ -9,7 +9,7 @@ from starlette.testclient import TestClient
 from app.config import settings
 from app.db.base import Base
 
-from app.tests.fixtures import *
+from app.tests.fixtures import *  # noqa
 
 
 @pytest.fixture(scope="session")
@@ -41,5 +41,6 @@ def client(db):
 
     with patch("app.api.deps.get_db", get_db):
         from app.main import app
+
         with TestClient(app) as client:
             yield client
