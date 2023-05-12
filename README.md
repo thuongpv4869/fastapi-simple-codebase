@@ -2,7 +2,7 @@
 
 ## Guide
 ### 1. Run project
-prepare .env file like `.env_example, app/.env_example`  
+prepare .env file like `.env_example, app/.env_example, app/.env_example.test`  
 1. Build image
 ```bash
 docker-compose build

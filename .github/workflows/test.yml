@@ -10,7 +10,6 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
-    environment: test
 
     steps:
     - uses: actions/checkout@v2
@@ -31,12 +30,9 @@ jobs:
     - name: Build Docker Compose
       run: |
         cp .env_example .env
-        cp ./app/.env_example ./app/.env
+        cp ./app/.env_example.test ./app/.env
         docker-compose build
 
     - name: Run test
       run: |
-        docker compose run -e \
-        SQLALCHEMY_DATABASE_URL=postgresql://postgres:postgres@db:5432/test_db \
-        api \
-        sh -c "cd app && pytest"
+        docker compose run api sh -c "cd app && pytest"
