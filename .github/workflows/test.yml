@@ -1,0 +1,42 @@
+name: test app
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    environment: test
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        pip install flake8
+
+    - name: Lint with flake8
+      run: |
+        flake8 app
+
+    - name: Build Docker Compose
+      run: |
+        cp .env_example .env
+        cp ./app/.env_example ./app/.env
+        docker-compose build
+
+    - name: Run test
+      run: |
+        docker compose run -e \
+        SQLALCHEMY_DATABASE_URL=postgresql://postgres:postgres@db:5432/test_db \
+        api \
+        sh -c "cd app && pytest"
