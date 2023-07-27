@@ -5,7 +5,7 @@ from app.db.session import SessionLocal
 
 from faker import Faker
 
-from app.services.token import get_password_hash
+from app.services.common import get_password_hash
 
 fake = Faker()
 

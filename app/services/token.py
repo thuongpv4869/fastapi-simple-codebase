@@ -2,22 +2,17 @@ from datetime import datetime, timedelta
 
 from fastapi import HTTPException
 from jose import jwt, JWTError
-from passlib.context import CryptContext
 
 from app.config import settings
+from app.services.common import pwd_context
 from app.services.crud_user import get_user_by_id
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 ALGORITHM = "HS256"
 
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
-
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
 
 
 def create_access_token(data: dict):
