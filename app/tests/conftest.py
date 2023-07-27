@@ -15,6 +15,7 @@ from app.tests.fixtures import *  # noqa
 @pytest.fixture(scope="session")
 def db():
     db_url = make_url(settings.SQLALCHEMY_DATABASE_URL)
+    db_url.set("database", "simple_api_test")
 
     engine = create_engine(db_url, echo=True)
 
