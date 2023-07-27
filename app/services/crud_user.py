@@ -13,12 +13,7 @@ def get_user_by_email(db: Session, email: str):
 
 
 def create_user(db: Session, email, full_name, phone, plain_pass):
-    user = models.User(
-        email=email,
-        full_name=full_name,
-        phone=phone,
-        password=get_password_hash(plain_pass)
-    )
+    user = models.User(email=email, full_name=full_name, phone=phone, password=get_password_hash(plain_pass))
     db.add(user)
     db.commit()
     db.refresh(user)
