@@ -17,6 +17,7 @@ class User(TimestampMixin, Base):
     phone: Mapped[str] = mapped_column(unique=True, index=True)
     disabled: Mapped[bool] = mapped_column(default=False)
     password: Mapped[str] = mapped_column()
+    user_profile: Mapped["UserProfile"] = relationship(back_populates="user")
 
 
 class UserProfile(TimestampMixin, Base):
