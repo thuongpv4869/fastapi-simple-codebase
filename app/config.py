@@ -11,6 +11,11 @@ ROOT_DIR = APP_DIR.parent.resolve()
 load_dotenv(os.getenv("ENV_FILE", f"{APP_DIR}/.env"))
 
 
+def get_default_static_dir():
+    static_dir = (APP_DIR / "static").resolve().__str__()
+    return static_dir
+
+
 class Settings(BaseSettings):
     PROJECT_NAME = os.environ["PROJECT_NAME"]
     API_V1_STR: str = "/api/v1"
@@ -19,6 +24,7 @@ class Settings(BaseSettings):
 
     ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ["ACCESS_TOKEN_EXPIRE_MINUTES"])
     SECRET_KEY = os.environ["SECRET_KEY"]
+    STATIC_DIR: str = get_default_static_dir()
 
 
 settings = Settings()
