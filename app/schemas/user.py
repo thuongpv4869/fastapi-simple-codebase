@@ -9,3 +9,7 @@ class UserMe(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class UserAvatar(BaseModel):
+    avatar_url: str

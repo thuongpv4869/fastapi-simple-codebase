@@ -3,7 +3,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 
 from app.api.api_v1.api import api_router
-from app.config import settings
+from app.config import settings, APP_DIR
 from app.middlewares import ProcessTimeMiddleware
 
 app = FastAPI(title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json")
@@ -22,4 +22,5 @@ app.add_middleware(ProcessTimeMiddleware)
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
-app.mount("/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
+app.mount("/static", StaticFiles(directory=f"{APP_DIR}/{settings.STATIC_DIR}"), name="static")
+app.mount("/media", StaticFiles(directory=f"{APP_DIR}/{settings.MEDIA_DIR}"), name="media")
